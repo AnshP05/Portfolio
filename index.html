@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ansh Parashar | Software Engineering Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #5b667a;
+      --accent: #2563eb;
+      --accent-dark: #1e40af;
+      --border: #dbe3ef;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+    }
+
+    nav h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 22px;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 72px 24px 48px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .tagline {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 2px solid var(--accent);
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--accent-dark);
+      text-decoration: none;
+      border-color: var(--accent-dark);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .button.secondary:hover {
+      background: #eaf1ff;
+      color: var(--accent-dark);
+    }
+
+    .hero-visual {
+      background: linear-gradient(145deg, #2563eb, #7c3aed);
+      border-radius: 28px;
+      min-height: 340px;
+      box-shadow: var(--shadow);
+      color: white;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 50%;
+      right: -60px;
+      bottom: -70px;
+    }
+
+    .code-card {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 18px;
+      padding: 18px;
+      font-family: "Courier New", monospace;
+      font-size: 0.9rem;
+      z-index: 1;
+    }
+
+    .profile-initials {
+      font-size: 4rem;
+      font-weight: 800;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 32px 24px;
+    }
+
+    section {
+      margin-bottom: 42px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      border-left: 5px solid var(--accent);
+      padding-left: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .resume-header h3 {
+      font-size: 1.5rem;
+    }
+
+    .contact {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .item {
+      margin-bottom: 22px;
+    }
+
+    .item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 3px;
+    }
+
+    .item .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    ul.resume-list {
+      margin-left: 20px;
+      color: var(--muted);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .skill {
+      background: #eef4ff;
+      color: var(--accent-dark);
+      border: 1px solid #cfe0ff;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .project-visual {
+      min-height: 260px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: linear-gradient(160deg, #eef4ff, #ffffff);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .mock-window {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 10px 22px rgba(23, 32, 51, 0.06);
+    }
+
+    .mock-bar {
+      height: 10px;
+      width: 70%;
+      background: #dbe7ff;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .mock-bar.short {
+      width: 45%;
+    }
+
+    .mock-stat {
+      display: flex;
+      justify-content: space-between;
+      background: #f7f9fd;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .project-content .tools {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 24px 50px;
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .grid,
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1>Ansh Parashar</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#resume">Résumé</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div>
+        <p class="tagline">Computer Science Student · Software Engineering</p>
+        <h2>Building reliable, user-focused software across mobile, backend, and full-stack systems.</h2>
+        <p>
+          I am a Computer Science student at Georgia Tech concentrating in Intelligence and Media.
+          My work focuses on practical software engineering: mobile app development, backend systems,
+          data-driven tools, and user-centered applications. I have experience through Credit Karma / Intuit,
+          Georgia Tech Research Institute, academic tutoring, and team-based software projects.
+        </p>
+
+        <div class="buttons">
+          <a class="button" href="#projects">View Projects</a>
+          <a class="button secondary" href="#resume">View Résumé</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Portfolio visual">
+        <div class="profile-initials">AP</div>
+        <div class="code-card">
+          const focus = {<br />
+          &nbsp;&nbsp;mobile: "app development",<br />
+          &nbsp;&nbsp;backend: "APIs + data",<br />
+          &nbsp;&nbsp;goal: "useful software"<br />
+          };
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="resume">
+        <h2 class="section-title">Résumé</h2>
+
+        <div class="card">
+          <div class="resume-header">
+            <div>
+              <h3>Ansh Parashar</h3>
+              <p class="contact">US Citizen · Atlanta, GA / Charlotte, NC</p>
+            </div>
+            <div class="contact">
+              <p><a href="mailto:aparashar37@gatech.edu">aparashar37@gatech.edu</a></p>
+              <p><a href="https://linkedin.com/in/ansh-parashar1430" target="_blank">linkedin.com/in/ansh-parashar1430</a></p>
+              <p><a href="https://github.com/AnshP05" target="_blank">github.com/AnshP05</a></p>
+            </div>
+          </div>
+
+          <div class="item">
+            <h4>Education</h4>
+            <p class="meta">
+              Georgia Institute of Technology — B.S. in Computer Science, Concentrations: Intelligence & Media
+            </p>
+            <p>
+              Relevant Coursework: Computer Organization & Architecture, Data Structures & Algorithms,
+              Design & Analysis of Algorithms, Discrete Math, Objects and Design, C for Engineers.
+            </p>
+          </div>
+
+          <div class="item">
+            <h4>Credit Karma / Intuit — Software Engineering Intern, App Development</h4>
+            <p class="meta">Charlotte, NC · Summer 2026</p>
+            <ul class="resume-list">
+              <li>Developing a mobile app feature that allows custom animations to be designed, configured, and presented in the Credit Karma app across Android and iOS.</li>
+              <li>Collaborating with engineers, designers, and product partners to translate animation and UI requirements into reusable app-development components.</li>
+              <li>Testing and debugging animation behavior across platforms to support a consistent, polished user experience.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h4>Georgia Tech Research Institute — Software Engineering Co-op</h4>
+            <p class="meta">Atlanta, GA · Spring 2026</p>
+            <ul class="resume-list">
+              <li>Developed radar-message processing software that ingests raw message data, extracts relevant fields, and prepares structured outputs for CMSP consumption.</li>
+              <li>Implemented filtering and transformation logic to reduce unnecessary processing and simplify downstream system workload.</li>
+              <li>Worked in a performance-sensitive embedded software environment using C/C++ concepts, debugging tools, and structured testing workflows.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h4>Cal Poly Pomona — Tutor</h4>
+            <p class="meta">Pomona, CA · August 2023 – Present</p>
+            <ul class="resume-list">
+              <li>Developed individualized strategies tailored to each student’s learning style, supporting students with ADHD and improving performance while fostering an inclusive environment.</li>
+              <li>Explained technical and academic concepts in clear, step-by-step language to help students build confidence and problem-solving skills.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h4>Technical Skills</h4>
+            <div class="skills">
+              <span class="skill">Java</span>
+              <span class="skill">Python</span>
+              <span class="skill">C/C++</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">TypeScript</span>
+              <span class="skill">React</span>
+              <span class="skill">FastAPI</span>
+              <span class="skill">Django</span>
+              <span class="skill">PostgreSQL</span>
+              <span class="skill">MySQL</span>
+              <span class="skill">Firebase</span>
+              <span class="skill">Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="card project-card">
+          <div class="project-visual">
+            <div class="mock-window">
+              <div class="mock-bar"></div>
+              <div class="mock-bar short"></div>
+              <div class="mock-stat">
+                <span>5K Prediction</span>
+                <strong>15:48</strong>
+              </div>
+              <div class="mock-stat">
+                <span>10K Prediction</span>
+                <strong>32:55</strong>
+              </div>
+              <div class="mock-stat">
+                <span>Model Input</span>
+                <strong>Mileage + Weather</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-content">
+            <h3>Running Performance Prediction Engine</h3>
+            <p class="tools">Java · Spring Boot · SMILE · React · Tailwind CSS</p>
+            <p>
+              The Running Performance Prediction Engine is a personal software project that uses race data
+              and machine learning to forecast athlete performances across multiple running distances.
+              I designed the project around a real problem I understand from competitive running: athletes
+              often want to know how a performance in one event translates to another event, but simple
+              pace calculators do not account for training background, event differences, or performance
+              patterns. The system preprocesses race data, trains regression models, and performs error
+              analysis to improve prediction quality. I used Java and Spring Boot for the backend and SMILE
+              for machine learning functionality, then began building a React and Tailwind CSS companion
+              website to make the tool more accessible. This project demonstrates my interest in combining
+              backend engineering, data modeling, and user-focused design to create software that is both
+              technically meaningful and personally useful.
+            </p>
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <div class="project-visual">
+            <div class="mock-window">
+              <div class="mock-bar"></div>
+              <div class="mock-stat">
+                <span>Recruiter Dashboard</span>
+                <strong>Active</strong>
+              </div>
+              <div class="mock-stat">
+                <span>Job Postings</span>
+                <strong>Database-backed</strong>
+              </div>
+              <div class="mock-stat">
+                <span>Team Workflow</span>
+                <strong>Scrum</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-content">
+            <h3>Recruiting Platform</h3>
+            <p class="tools">Django · PostgreSQL · GitHub · Scrum</p>
+            <p>
+              The Recruiting Platform is a team-based web application designed to function like a simplified
+              LinkedIn-style recruiting system. The platform includes job postings, recruiter dashboards,
+              candidate browsing, and core workflows that help connect job seekers with recruiters. I worked
+              with a team of five using GitHub, VS Code, and Scrum-style development practices to plan
+              features, divide responsibilities, track progress, and integrate code into a shared project.
+              My work strengthened my understanding of database-backed web applications and the importance
+              of designing features around user roles. The project also required us to think about presentation,
+              architecture, and usability because we demonstrated the final website to more than 100 students
+              and faculty. This project represents an important step in my development as a software engineer
+              because it combined backend logic, database design, collaborative workflows, and professional
+              communication in a realistic team environment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="clubs">
+        <h2 class="section-title">Clubs & Involvement</h2>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Formula SAE</h3>
+            <p>
+              Contributed to embedded systems work for vehicle telemetry and performance monitoring while
+              collaborating with mechanical and electrical engineering teammates.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>GITMAD</h3>
+            <p>
+              Participated in Georgia Tech Mobile App Development workshops and sprints focused on
+              cross-platform apps, UI/UX, API integration, React Native, and Firebase.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="card">
+          <p>
+            I am interested in software engineering internships and projects involving mobile development,
+            backend systems, full-stack applications, and data-driven tools.
+          </p>
+          <p style="margin-top: 12px;">
+            Email:
+            <a href="mailto:aparashar37@gatech.edu">aparashar37@gatech.edu</a>
+          </p>
+          <p>
+            LinkedIn:
+            <a href="https://linkedin.com/in/ansh-parashar1430" target="_blank">linkedin.com/in/ansh-parashar1430</a>
+          </p>
+          <p>
+            GitHub:
+            <a href="https://github.com/AnshP05" target="_blank">github.com/AnshP05</a>
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Ansh Parashar. Built as a professional software engineering portfolio.</p>
+  </footer>
+</body>
+</html>
