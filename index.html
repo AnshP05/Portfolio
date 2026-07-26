@@ -1,609 +1,507 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ansh Parashar | Software Engineering Portfolio</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Georgia Tech Computing Student Resource Guide</title>
+  <meta name="description" content="An accessible onboarding guide that helps Georgia Tech College of Computing students find advising, degree, registration, tutoring, and career resources.">
   <style>
     :root {
-      --bg: #f6f8fb;
-      --card: #ffffff;
-      --text: #172033;
-      --muted: #5b667a;
-      --accent: #2563eb;
-      --accent-dark: #1e40af;
-      --border: #dbe3ef;
-      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+      --navy: #003057;
+      --gold: #b3a369;
+      --cream: #f7f3e3;
+      --ink: #1f2933;
+      --muted: #52606d;
+      --line: #d6d9dc;
+      --white: #ffffff;
+      --focus: #005fcc;
+      --success: #0f6b45;
+      --max: 74rem;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      color: var(--ink);
+      background: var(--white);
       line-height: 1.6;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
+    a { color: #004f9e; text-underline-offset: .16em; }
+    a:hover { text-decoration-thickness: 3px; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: .15rem;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .skip-link {
+      position: absolute;
+      left: .75rem;
+      top: -8rem;
+      background: var(--white);
+      color: var(--navy);
+      border: 3px solid var(--navy);
+      padding: .75rem 1rem;
+      font-weight: 700;
+      z-index: 999;
     }
+    .skip-link:focus { top: .75rem; }
 
     header {
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
+      background: var(--navy);
+      color: var(--white);
+      border-bottom: .45rem solid var(--gold);
+    }
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.4rem 1.25rem 2.8rem;
+    }
+    .eyebrow {
+      margin: 0 0 .35rem;
+      color: #f0e5b6;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: .9rem;
+    }
+    h1 {
+      margin: 0;
+      max-width: 18ch;
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 1.05;
+    }
+    .hero p {
+      max-width: 62ch;
+      font-size: 1.18rem;
+      margin: 1rem 0 0;
     }
 
     nav {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px;
+      background: #eef3f7;
+      border-bottom: 1px solid var(--line);
     }
-
-    nav h1 {
-      font-size: 1.1rem;
-      letter-spacing: 0.5px;
-    }
-
     nav ul {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: .75rem 1.25rem;
       display: flex;
-      list-style: none;
-      gap: 22px;
-      font-size: 0.95rem;
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: auto;
-      padding: 72px 24px 48px;
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero h2 {
-      font-size: clamp(2.3rem, 5vw, 4.2rem);
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 720px;
-      margin-bottom: 24px;
-    }
-
-    .tagline {
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      font-size: 0.85rem;
-      margin-bottom: 16px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: .35rem 1rem;
+      list-style: none;
+    }
+    nav a { font-weight: 700; }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    section { margin-block: 3.2rem; scroll-margin-top: 1rem; }
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      line-height: 1.2;
+      margin-bottom: .65rem;
+    }
+    h3 { color: var(--navy); line-height: 1.25; }
+    .lede { max-width: 70ch; font-size: 1.06rem; }
+
+    .callout {
+      background: var(--cream);
+      border-left: .4rem solid var(--gold);
+      padding: 1rem 1.15rem;
+      margin: 1.2rem 0;
     }
 
-    .button {
+    .resource-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .resource-card {
+      border: 2px solid var(--navy);
+      border-radius: .7rem;
+      padding: 1rem;
+      background: #f7fafc;
+    }
+    .resource-card h3 { margin-top: 0; }
+    .resource-card p { margin-bottom: .35rem; }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+    }
+    .steps > li {
+      counter-increment: step;
+      border: 1px solid var(--line);
+      border-left: .4rem solid var(--gold);
+      padding: 1rem 1.1rem;
+      border-radius: .35rem;
+      background: var(--white);
+    }
+    .steps > li::before {
+      content: "Step " counter(step);
       display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      border: 2px solid var(--accent);
-      transition: 0.2s ease;
+      color: var(--navy);
+      font-weight: 800;
+      margin-bottom: .3rem;
     }
 
-    .button:hover {
-      background: var(--accent-dark);
-      text-decoration: none;
-      border-color: var(--accent-dark);
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .9rem;
+      margin: 1.25rem 0;
     }
-
-    .button.secondary {
-      background: transparent;
-      color: var(--accent);
+    .timeline article {
+      border-top: .45rem solid var(--gold);
+      background: #f7fafc;
+      padding: 1rem;
+      min-height: 13rem;
     }
+    .timeline h3 { margin-top: 0; }
 
-    .button.secondary:hover {
-      background: #eaf1ff;
-      color: var(--accent-dark);
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
     }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid #9aa5b1;
+      padding: .75rem;
+    }
+    th { background: #e7eef4; color: var(--navy); }
 
-    .hero-visual {
-      background: linear-gradient(145deg, #2563eb, #7c3aed);
-      border-radius: 28px;
-      min-height: 340px;
-      box-shadow: var(--shadow);
-      color: white;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
+    .checklist {
+      list-style: none;
+      padding: 0;
+      columns: 2;
+      column-gap: 2rem;
+    }
+    .checklist li {
+      break-inside: avoid;
+      margin: 0 0 .75rem;
+      padding-left: 1.9rem;
       position: relative;
     }
-
-    .hero-visual::after {
-      content: "";
+    .checklist li::before {
+      content: "☐";
       position: absolute;
-      width: 240px;
-      height: 240px;
-      background: rgba(255, 255, 255, 0.13);
-      border-radius: 50%;
-      right: -60px;
-      bottom: -70px;
+      left: 0;
+      top: -.1rem;
+      font-size: 1.25rem;
+      color: var(--navy);
     }
 
-    .code-card {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 18px;
-      padding: 18px;
-      font-family: "Courier New", monospace;
-      font-size: 0.9rem;
-      z-index: 1;
+    details {
+      border: 1px solid var(--line);
+      border-radius: .4rem;
+      padding: .8rem 1rem;
+      margin-bottom: .75rem;
     }
+    summary { cursor: pointer; font-weight: 700; color: var(--navy); }
 
-    .profile-initials {
-      font-size: 4rem;
-      font-weight: 800;
-      z-index: 1;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 32px 24px;
-    }
-
-    section {
-      margin-bottom: 42px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 18px;
-      border-left: 5px solid var(--accent);
-      padding-left: 14px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-      margin-bottom: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .resume-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .resume-header h3 {
-      font-size: 1.5rem;
-    }
-
-    .contact {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .item {
-      margin-bottom: 22px;
-    }
-
-    .item h4 {
-      font-size: 1.1rem;
-      margin-bottom: 3px;
-    }
-
-    .item .meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-    }
-
-    ul.resume-list {
-      margin-left: 20px;
-      color: var(--muted);
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .skill {
-      background: #eef4ff;
-      color: var(--accent-dark);
-      border: 1px solid #cfe0ff;
-      padding: 8px 10px;
-      border-radius: 999px;
-      font-size: 0.9rem;
+    .button-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+    button {
+      background: var(--navy);
+      color: var(--white);
+      border: 0;
+      border-radius: .35rem;
+      padding: .75rem 1rem;
+      font: inherit;
       font-weight: 700;
-    }
-
-    .project-card {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .project-visual {
-      min-height: 260px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: linear-gradient(160deg, #eef4ff, #ffffff);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 14px;
-      overflow: hidden;
-    }
-
-    .mock-window {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 10px 22px rgba(23, 32, 51, 0.06);
-    }
-
-    .mock-bar {
-      height: 10px;
-      width: 70%;
-      background: #dbe7ff;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
-
-    .mock-bar.short {
-      width: 45%;
-    }
-
-    .mock-stat {
-      display: flex;
-      justify-content: space-between;
-      background: #f7f9fd;
-      border-radius: 10px;
-      padding: 10px;
-      margin-top: 8px;
-      font-size: 0.9rem;
-    }
-
-    .project-content h3 {
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-    }
-
-    .project-content .tools {
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .project-content p {
-      color: var(--muted);
-      margin-bottom: 12px;
+      cursor: pointer;
     }
 
     footer {
-      text-align: center;
-      color: var(--muted);
-      padding: 30px 24px 50px;
+      background: #eef3f7;
+      border-top: 1px solid var(--line);
+      padding: 2rem 1.25rem;
+    }
+    footer > div { max-width: var(--max); margin: 0 auto; }
+    .small { font-size: .92rem; color: var(--muted); }
+
+    @media (max-width: 800px) {
+      .resource-map { grid-template-columns: 1fr 1fr; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .resource-map, .timeline { grid-template-columns: 1fr; }
+      .checklist { columns: 1; }
+      nav ul { display: block; }
+      nav li { margin-bottom: .35rem; }
     }
 
-    @media (max-width: 850px) {
-      .hero,
-      .grid,
-      .project-card {
-        grid-template-columns: 1fr;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+    @media print {
+      nav, .skip-link, .button-row { display: none; }
+      header { background: none; color: black; border-bottom: 3px solid black; }
+      .hero { padding: 1rem 0; }
+      main { max-width: none; padding: 0; }
+      a { color: black; }
+      section { break-inside: avoid; margin-block: 1.4rem; }
+      .resource-card, .steps > li, .timeline article, details { break-inside: avoid; }
     }
   </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header>
-    <nav>
-      <h1>Ansh Parashar</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#resume">Résumé</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="hero">
+      <p class="eyebrow">Georgia Tech College of Computing</p>
+      <h1>Student Resource Guide</h1>
+      <p>An accessible, task-based guide for finding advising, degree, registration, academic support, and career resources without searching through multiple menus.</p>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="about">
-      <div>
-        <p class="tagline">Computer Science Student · Software Engineering</p>
-        <h2>Building reliable, user-focused software across mobile, backend, and full-stack systems.</h2>
-        <p>
-          I am a Computer Science student at Georgia Tech concentrating in Intelligence and Media.
-          My work focuses on practical software engineering: mobile app development, backend systems,
-          data-driven tools, and user-centered applications. I have experience through Credit Karma / Intuit,
-          Georgia Tech Research Institute, academic tutoring, and team-based software projects.
-        </p>
+  <nav aria-label="Guide sections">
+    <ul>
+      <li><a href="#start">Start here</a></li>
+      <li><a href="#advisor">Find your advisor</a></li>
+      <li><a href="#degree">Check your degree plan</a></li>
+      <li><a href="#registration">Prepare for registration</a></li>
+      <li><a href="#support">Get academic support</a></li>
+      <li><a href="#checklist">Quick checklist</a></li>
+    </ul>
+  </nav>
 
-        <div class="buttons">
-          <a class="button" href="#projects">View Projects</a>
-          <a class="button secondary" href="#resume">View Résumé</a>
-        </div>
+  <main id="main-content" tabindex="-1">
+    <section id="start">
+      <h2>Start with the task you need to complete</h2>
+      <p class="lede">The College of Computing website contains many useful resources, but students may need to move between several pages to locate them. Use the map below to begin with your goal instead of searching through every menu.</p>
+
+      <div class="resource-map" role="list" aria-label="Resource map organized by student task">
+        <article class="resource-card" role="listitem">
+          <h3>Degree or Threads</h3>
+          <p>Use degree information, curriculum sheets, prerequisite maps, and the Georgia Tech catalog.</p>
+          <a href="#degree">Go to degree-planning instructions</a>
+        </article>
+        <article class="resource-card" role="listitem">
+          <h3>Course registration</h3>
+          <p>Use the undergraduate registration page, OSCAR, time-ticket information, and Student Alerts.</p>
+          <a href="#registration">Go to registration instructions</a>
+        </article>
+        <article class="resource-card" role="listitem">
+          <h3>Academic advising</h3>
+          <p>Find the advisor assigned to your major and last name, then schedule through Navigate360.</p>
+          <a href="#advisor">Go to advising instructions</a>
+        </article>
+        <article class="resource-card" role="listitem">
+          <h3>Tutoring or course help</h3>
+          <p>Use College and campus academic-support resources, course office hours, and tutoring services.</p>
+          <a href="#support">Go to academic-support options</a>
+        </article>
+        <article class="resource-card" role="listitem">
+          <h3>Internships or career help</h3>
+          <p>Use College career services for job searches, resumes, interviews, and career planning.</p>
+          <a href="https://www.cc.gatech.edu/computing-career-services" target="_blank" rel="noopener">Open College of Computing Career Services</a>
+        </article>
+        <article class="resource-card" role="listitem">
+          <h3>Forms or policies</h3>
+          <p>Use the policies, procedures, and forms page for petitions, withdrawals, research options, and related processes.</p>
+          <a href="https://www.cc.gatech.edu/undergraduate-academic-policies-procedures-and-forms" target="_blank" rel="noopener">Open undergraduate policies and forms</a>
+        </article>
       </div>
 
-      <div class="hero-visual" aria-label="Portfolio visual">
-        <div class="profile-initials">AP</div>
-        <div class="code-card">
-          const focus = {<br />
-          &nbsp;&nbsp;mobile: "app development",<br />
-          &nbsp;&nbsp;backend: "APIs + data",<br />
-          &nbsp;&nbsp;goal: "useful software"<br />
-          };
-        </div>
+      <div class="callout">
+        <strong>Accessibility note:</strong> Every link in this guide describes its destination. The page also uses semantic headings, visible keyboard focus, strong contrast, and a skip link for screen-reader and keyboard users.
       </div>
     </section>
 
-    <div class="container">
-      <section id="resume">
-        <h2 class="section-title">Résumé</h2>
+    <section id="advisor">
+      <h2>Task 1: Find and contact your academic advisor</h2>
+      <p>Academic advisors can help with course scheduling, degree requirements, registration problems, and other academic concerns.</p>
+      <ol class="steps">
+        <li>
+          <strong>Open the advisor directory.</strong>
+          <p>Use the <a href="https://www.cc.gatech.edu/undergraduate-academic-advising-team" target="_blank" rel="noopener">College of Computing Undergraduate Academic Advising Team directory</a>.</p>
+        </li>
+        <li>
+          <strong>Match your major and last-name range.</strong>
+          <p>Read the advisor descriptions carefully because assignments are organized by program and last name.</p>
+        </li>
+        <li>
+          <strong>Schedule through Navigate360.</strong>
+          <p>Use the appointment link in the advisor directory or open Navigate360 through BuzzPort.</p>
+        </li>
+        <li>
+          <strong>Prepare a specific question.</strong>
+          <p>Include your GTID when requested and bring your current course plan, Degree Works information, or the exact registration error you received.</p>
+        </li>
+      </ol>
+    </section>
 
-        <div class="card">
-          <div class="resume-header">
-            <div>
-              <h3>Ansh Parashar</h3>
-              <p class="contact">US Citizen · Atlanta, GA / Charlotte, NC</p>
-            </div>
-            <div class="contact">
-              <p><a href="mailto:aparashar37@gatech.edu">aparashar37@gatech.edu</a></p>
-              <p><a href="https://linkedin.com/in/ansh-parashar1430" target="_blank">linkedin.com/in/ansh-parashar1430</a></p>
-              <p><a href="https://github.com/AnshP05" target="_blank">github.com/AnshP05</a></p>
-            </div>
-          </div>
+    <section id="degree">
+      <h2>Task 2: Check degree progress and plan future courses</h2>
+      <p>Use multiple sources together. Degree Works provides a personalized audit, while College pages and the catalog provide program requirements, prerequisite maps, and course-planning materials.</p>
 
-          <div class="item">
-            <h4>Education</h4>
-            <p class="meta">
-              Georgia Institute of Technology — B.S. in Computer Science, Concentrations: Intelligence & Media
-            </p>
-            <p>
-              Relevant Coursework: Computer Organization & Architecture, Data Structures & Algorithms,
-              Design & Analysis of Algorithms, Discrete Math, Objects and Design, C for Engineers.
-            </p>
-          </div>
+      <table>
+        <caption class="small">Which source should you use?</caption>
+        <thead>
+          <tr>
+            <th scope="col">Question</th>
+            <th scope="col">Best starting point</th>
+            <th scope="col">What to check</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>What requirements have I completed?</td>
+            <td><a href="https://registrar.gatech.edu/current-students/degree-information" target="_blank" rel="noopener">Registrar degree information and Degree Works</a></td>
+            <td>Completed, in-progress, and remaining requirements</td>
+          </tr>
+          <tr>
+            <td>What are the CS core and Thread requirements?</td>
+            <td><a href="https://www.cc.gatech.edu/undergraduate-degree-information" target="_blank" rel="noopener">College of Computing undergraduate degree information</a></td>
+            <td>Core requirements, Thread combination sheets, prerequisite maps, and anticipated offerings</td>
+          </tr>
+          <tr>
+            <td>What does a course require?</td>
+            <td><a href="https://catalog.gatech.edu/courses-undergrad/cs/" target="_blank" rel="noopener">Georgia Tech catalog: undergraduate CS courses</a></td>
+            <td>Course description, credit hours, and listed prerequisites</td>
+          </tr>
+        </tbody>
+      </table>
 
-          <div class="item">
-            <h4>Credit Karma / Intuit — Software Engineering Intern, App Development</h4>
-            <p class="meta">Charlotte, NC · Summer 2026</p>
-            <ul class="resume-list">
-              <li>Developing a mobile app feature that allows custom animations to be designed, configured, and presented in the Credit Karma app across Android and iOS.</li>
-              <li>Collaborating with engineers, designers, and product partners to translate animation and UI requirements into reusable app-development components.</li>
-              <li>Testing and debugging animation behavior across platforms to support a consistent, polished user experience.</li>
-            </ul>
-          </div>
+      <div class="callout">
+        <strong>Before meeting with an advisor:</strong> Draft at least two possible course plans. Mark any prerequisite, Thread, or graduation questions that you cannot answer from the official materials.
+      </div>
+    </section>
 
-          <div class="item">
-            <h4>Georgia Tech Research Institute — Software Engineering Co-op</h4>
-            <p class="meta">Atlanta, GA · Spring 2026</p>
-            <ul class="resume-list">
-              <li>Developed radar-message processing software that ingests raw message data, extracts relevant fields, and prepares structured outputs for CMSP consumption.</li>
-              <li>Implemented filtering and transformation logic to reduce unnecessary processing and simplify downstream system workload.</li>
-              <li>Worked in a performance-sensitive embedded software environment using C/C++ concepts, debugging tools, and structured testing workflows.</li>
-            </ul>
-          </div>
+    <section id="registration">
+      <h2>Task 3: Prepare for registration</h2>
+      <p>The Registrar assigns each student a time ticket that controls when they can add or drop courses. The College of Computing also maintains a registration page with CS-specific information and updates.</p>
 
-          <div class="item">
-            <h4>Cal Poly Pomona — Tutor</h4>
-            <p class="meta">Pomona, CA · August 2023 – Present</p>
-            <ul class="resume-list">
-              <li>Developed individualized strategies tailored to each student’s learning style, supporting students with ADHD and improving performance while fostering an inclusive environment.</li>
-              <li>Explained technical and academic concepts in clear, step-by-step language to help students build confidence and problem-solving skills.</li>
-            </ul>
-          </div>
+      <div class="timeline" aria-label="Registration preparation timeline">
+        <article>
+          <h3>1–2 weeks before</h3>
+          <ul>
+            <li>Review Degree Works and prerequisites.</li>
+            <li>Draft a first-choice schedule.</li>
+            <li>Create backup course options.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>A few days before</h3>
+          <ul>
+            <li>Check your time ticket.</li>
+            <li>Check for registration holds.</li>
+            <li>Read current CS registration updates.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>When registration opens</h3>
+          <ul>
+            <li>Register for priority courses first.</li>
+            <li>Join available waitlists when needed.</li>
+            <li>Record any error message exactly.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>After registering</h3>
+          <ul>
+            <li>Recheck your complete schedule.</li>
+            <li>Confirm credit hours and linked labs.</li>
+            <li>Contact advising about unresolved issues.</li>
+          </ul>
+        </article>
+      </div>
 
-          <div class="item">
-            <h4>Technical Skills</h4>
-            <div class="skills">
-              <span class="skill">Java</span>
-              <span class="skill">Python</span>
-              <span class="skill">C/C++</span>
-              <span class="skill">JavaScript</span>
-              <span class="skill">TypeScript</span>
-              <span class="skill">React</span>
-              <span class="skill">FastAPI</span>
-              <span class="skill">Django</span>
-              <span class="skill">PostgreSQL</span>
-              <span class="skill">MySQL</span>
-              <span class="skill">Firebase</span>
-              <span class="skill">Git</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <h3>Registration links</h3>
+      <ul>
+        <li><a href="https://www.cc.gatech.edu/undergraduate-registration" target="_blank" rel="noopener">Read current College of Computing undergraduate registration information</a></li>
+        <li><a href="https://registrar.gatech.edu/registration" target="_blank" rel="noopener">Open the Registrar’s registration resource page</a></li>
+        <li><a href="https://registrar.gatech.edu/info/registration-videos" target="_blank" rel="noopener">View official registration guides and videos</a></li>
+        <li><a href="https://registrar.gatech.edu/registration/time-tickets" target="_blank" rel="noopener">Review time-ticket information</a></li>
+      </ul>
+    </section>
 
-      <section id="projects">
-        <h2 class="section-title">Projects</h2>
+    <section id="support">
+      <h2>Task 4: Find help before a problem becomes urgent</h2>
+      <p>The undergraduate academic-resources page combines College and campus options, including advising, tutoring, academic coaching, communication support, and personal-support resources.</p>
 
-        <div class="card project-card">
-          <div class="project-visual">
-            <div class="mock-window">
-              <div class="mock-bar"></div>
-              <div class="mock-bar short"></div>
-              <div class="mock-stat">
-                <span>5K Prediction</span>
-                <strong>15:48</strong>
-              </div>
-              <div class="mock-stat">
-                <span>10K Prediction</span>
-                <strong>32:55</strong>
-              </div>
-              <div class="mock-stat">
-                <span>Model Input</span>
-                <strong>Mileage + Weather</strong>
-              </div>
-            </div>
-          </div>
+      <div class="resource-map" role="list" aria-label="Academic support options">
+        <article class="resource-card" role="listitem">
+          <h3>Course content</h3>
+          <p>Begin with professor or TA office hours, then check tutoring and peer-learning options.</p>
+        </article>
+        <article class="resource-card" role="listitem">
+          <h3>Study strategy</h3>
+          <p>Use academic coaching or student-success resources for time management, test anxiety, and study planning.</p>
+        </article>
+        <article class="resource-card" role="listitem">
+          <h3>Writing or presentations</h3>
+          <p>Use the Communication Center or Communications Lab for reports, presentations, and project communication.</p>
+        </article>
+      </div>
 
-          <div class="project-content">
-            <h3>Running Performance Prediction Engine</h3>
-            <p class="tools">Java · Spring Boot · SMILE · React · Tailwind CSS</p>
-            <p>
-              The Running Performance Prediction Engine is a personal software project that uses race data
-              and machine learning to forecast athlete performances across multiple running distances.
-              I designed the project around a real problem I understand from competitive running: athletes
-              often want to know how a performance in one event translates to another event, but simple
-              pace calculators do not account for training background, event differences, or performance
-              patterns. The system preprocesses race data, trains regression models, and performs error
-              analysis to improve prediction quality. I used Java and Spring Boot for the backend and SMILE
-              for machine learning functionality, then began building a React and Tailwind CSS companion
-              website to make the tool more accessible. This project demonstrates my interest in combining
-              backend engineering, data modeling, and user-focused design to create software that is both
-              technically meaningful and personally useful.
-            </p>
-          </div>
-        </div>
+      <p><a href="https://www.cc.gatech.edu/undergraduate-academic-resources" target="_blank" rel="noopener">Open the College of Computing Undergraduate Academic Resources page</a>.</p>
+    </section>
 
-        <div class="card project-card">
-          <div class="project-visual">
-            <div class="mock-window">
-              <div class="mock-bar"></div>
-              <div class="mock-stat">
-                <span>Recruiter Dashboard</span>
-                <strong>Active</strong>
-              </div>
-              <div class="mock-stat">
-                <span>Job Postings</span>
-                <strong>Database-backed</strong>
-              </div>
-              <div class="mock-stat">
-                <span>Team Workflow</span>
-                <strong>Scrum</strong>
-              </div>
-            </div>
-          </div>
+    <section id="checklist">
+      <h2>Quick-reference checklist</h2>
+      <p>Use this list at the beginning of a semester or before registration.</p>
+      <ul class="checklist">
+        <li>I know who my assigned academic advisor is.</li>
+        <li>I know how to schedule an appointment in Navigate360.</li>
+        <li>I reviewed Degree Works for missing requirements.</li>
+        <li>I checked my Thread and core requirements.</li>
+        <li>I reviewed prerequisites for planned courses.</li>
+        <li>I created at least two backup schedules.</li>
+        <li>I checked my time ticket and registration holds.</li>
+        <li>I read current CS registration updates.</li>
+        <li>I know where to find tutoring and office-hour support.</li>
+        <li>I saved links to the resources I use most often.</li>
+      </ul>
+      <div class="button-row">
+        <button type="button" onclick="window.print()">Print or save this guide as PDF</button>
+      </div>
+    </section>
 
-          <div class="project-content">
-            <h3>Recruiting Platform</h3>
-            <p class="tools">Django · PostgreSQL · GitHub · Scrum</p>
-            <p>
-              The Recruiting Platform is a team-based web application designed to function like a simplified
-              LinkedIn-style recruiting system. The platform includes job postings, recruiter dashboards,
-              candidate browsing, and core workflows that help connect job seekers with recruiters. I worked
-              with a team of five using GitHub, VS Code, and Scrum-style development practices to plan
-              features, divide responsibilities, track progress, and integrate code into a shared project.
-              My work strengthened my understanding of database-backed web applications and the importance
-              of designing features around user roles. The project also required us to think about presentation,
-              architecture, and usability because we demonstrated the final website to more than 100 students
-              and faculty. This project represents an important step in my development as a software engineer
-              because it combined backend logic, database design, collaborative workflows, and professional
-              communication in a realistic team environment.
-            </p>
-          </div>
-        </div>
-      </section>
+    <section id="questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>I found conflicting information. Which source should I trust?</summary>
+        <p>Use the most recent official College of Computing or Registrar page, then ask your assigned advisor when the information affects your degree progress or registration.</p>
+      </details>
+      <details>
+        <summary>I received a registration error. What should I send to advising?</summary>
+        <p>Record the exact error message, course and section, term, and the steps you already attempted. Avoid sending only a screenshot without a text description because text is easier to search and more accessible.</p>
+      </details>
+      <details>
+        <summary>Why does this guide avoid links labeled “here”?</summary>
+        <p>Screen-reader users may navigate through a list of links without hearing the surrounding paragraph. Descriptive link wording explains the destination by itself.</p>
+      </details>
+    </section>
 
-      <section id="clubs">
-        <h2 class="section-title">Clubs & Involvement</h2>
-
-        <div class="grid">
-          <div class="card">
-            <h3>Formula SAE</h3>
-            <p>
-              Contributed to embedded systems work for vehicle telemetry and performance monitoring while
-              collaborating with mechanical and electrical engineering teammates.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>GITMAD</h3>
-            <p>
-              Participated in Georgia Tech Mobile App Development workshops and sprints focused on
-              cross-platform apps, UI/UX, API integration, React Native, and Firebase.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2 class="section-title">Contact</h2>
-
-        <div class="card">
-          <p>
-            I am interested in software engineering internships and projects involving mobile development,
-            backend systems, full-stack applications, and data-driven tools.
-          </p>
-          <p style="margin-top: 12px;">
-            Email:
-            <a href="mailto:aparashar37@gatech.edu">aparashar37@gatech.edu</a>
-          </p>
-          <p>
-            LinkedIn:
-            <a href="https://linkedin.com/in/ansh-parashar1430" target="_blank">linkedin.com/in/ansh-parashar1430</a>
-          </p>
-          <p>
-            GitHub:
-            <a href="https://github.com/AnshP05" target="_blank">github.com/AnshP05</a>
-          </p>
-        </div>
-      </section>
-    </div>
+    <section id="sources">
+      <h2>Sources and maintenance notes</h2>
+      <p>This training guide uses official Georgia Tech materials. Because registration rules, advisor assignments, and support programs may change, future editors should verify each link at least once per semester.</p>
+      <ul>
+        <li><a href="https://www.cc.gatech.edu/undergraduate-advising" target="_blank" rel="noopener">College of Computing Undergraduate Advising</a></li>
+        <li><a href="https://www.cc.gatech.edu/undergraduate-degree-information" target="_blank" rel="noopener">College of Computing Undergraduate Degree Information</a></li>
+        <li><a href="https://www.cc.gatech.edu/undergraduate-registration" target="_blank" rel="noopener">College of Computing Undergraduate Registration</a></li>
+        <li><a href="https://www.cc.gatech.edu/undergraduate-academic-resources" target="_blank" rel="noopener">College of Computing Undergraduate Academic Resources</a></li>
+        <li><a href="https://registrar.gatech.edu/registration" target="_blank" rel="noopener">Georgia Tech Registrar Registration Resources</a></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
-    <p>© 2026 Ansh Parashar. Built as a professional software engineering portfolio.</p>
+    <div>
+      <strong>Draft training material for LMC 3403</strong>
+      <p class="small">Community: Georgia Tech College of Computing students. Purpose: reduce the time and effort required to locate common academic resources, especially for keyboard and screen-reader users.</p>
+    </div>
   </footer>
 </body>
 </html>
